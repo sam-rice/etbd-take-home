@@ -1,0 +1,1 @@
+export type AvailabilityStatus = "Available" | "Limited" | "Sold Out"
