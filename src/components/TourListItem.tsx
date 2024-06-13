@@ -1,10 +1,11 @@
 import { FC } from "react"
 import Tour from "../interfaces/tour"
-import moment from "moment"
 import { AvailabilityStatus } from "../types/tour"
 import AvailabilityStatusChip from "./AvailabilityStatusChip"
+import classNames from "classnames"
 
 interface TourListItemProps extends Tour {
+  isSelected: boolean
   selectTour: (id: string) => void
 }
 
@@ -17,8 +18,14 @@ const TourListItem: FC<TourListItemProps> = ({
   startCity,
   endCity,
   seatsAvailable,
+  isSelected,
   selectTour,
 }) => {
+  const classes = classNames(
+    "bg-theme-blue-100 rounded-lg mb-3 flex justify-between p-6 hover:cursor-pointer hover:bg-theme-blue-200",
+    { "bg-theme-blue-200 outline outline-2 outline-green-600": isSelected }
+  )
+
   const availabilityStatus: AvailabilityStatus =
     seatsAvailable > 5
       ? "Available"
@@ -28,7 +35,7 @@ const TourListItem: FC<TourListItemProps> = ({
 
   return (
     <li
-      className="bg-theme-blue-100 rounded-lg mb-3 flex justify-between p-6 hover:cursor-pointer hover:bg-theme-blue-200"
+      className={classes}
       onClick={() => selectTour(id)}
     >
       <div>
@@ -36,18 +43,18 @@ const TourListItem: FC<TourListItemProps> = ({
         <div className="flex items-center text-theme-blue-500 space-x-5">
           <span>
             <div className=" font-medium text-xl">{startCity}</div>
-            <div>{moment(startDate).calendar()}</div>
+            <div>{startDate}</div>
           </span>
           <span>to</span>
           <span>
             <div className=" font-medium text-xl">{endCity}</div>
-            <div>{moment(endDate).calendar()}</div>
+            <div>{endDate}</div>
           </span>
         </div>
       </div>
       <div className="flex items-center">
         <AvailabilityStatusChip status={availabilityStatus} />
-        <span className="flex items-center justify-center flex-col text-theme-blue-500 ml-4">
+        <span className="flex items-center justify-center flex-col text-theme-blue-500 ml-6">
           <div className="font-bold text-3xl -mb-1">{days}</div>
           <div>days</div>
         </span>

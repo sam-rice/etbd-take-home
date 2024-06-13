@@ -11,6 +11,7 @@ module.exports = {
         "theme-blue-100": "#E0F1F9",
         "theme-gray-100": "#EFF8FB",
         "theme-gray-200": "#EAEAEA",
+        "theme-gray-300": "#F1F1F1",
         "theme-yellow": "#F8BE14"
       },
       textColor: {
@@ -22,6 +23,9 @@ module.exports = {
         "theme-gray-100": "#EFF8FB",
         "theme-gray-200": "#EAEAEA",
         "theme-yellow": "#F8BE14"
+      },
+      borderColor: {
+        "theme-gray-400": "#989898",
       }
     },
   },
