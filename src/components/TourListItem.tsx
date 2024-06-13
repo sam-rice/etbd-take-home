@@ -1,10 +1,11 @@
 import { FC } from "react"
 import Tour from "../interfaces/tour"
-import { AvailabilityStatus } from "../types/tour"
 import AvailabilityStatusChip from "./AvailabilityStatusChip"
 import classNames from "classnames"
+import { AvailabilityStatus } from "../types/tour"
 
 interface TourListItemProps extends Tour {
+  availabilityStatus: AvailabilityStatus
   isSelected: boolean
   selectTour: (id: string) => void
 }
@@ -17,7 +18,7 @@ const TourListItem: FC<TourListItemProps> = ({
   endDate,
   startCity,
   endCity,
-  seatsAvailable,
+  availabilityStatus,
   isSelected,
   selectTour,
 }) => {
@@ -25,13 +26,6 @@ const TourListItem: FC<TourListItemProps> = ({
     "bg-theme-blue-100 rounded-lg mb-3 flex justify-between p-6 hover:cursor-pointer hover:bg-theme-blue-200",
     { "bg-theme-blue-200 outline outline-2 outline-green-600": isSelected }
   )
-
-  const availabilityStatus: AvailabilityStatus =
-    seatsAvailable > 5
-      ? "Available"
-      : seatsAvailable < 1
-      ? "Sold Out"
-      : "Limited"
 
   return (
     <li

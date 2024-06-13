@@ -1,3 +1,5 @@
+import { AvailabilityStatus } from "../types/tour"
+
 export default interface Tour {
   id: string
   status: "Active" | "Inactive"
@@ -10,4 +12,5 @@ export default interface Tour {
   seatsAvailable: number
   seatsBooked: number
   seatsMaximum: number
+  availabilityStatus: AvailabilityStatus
 }
